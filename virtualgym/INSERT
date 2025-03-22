@@ -1,0 +1,105 @@
+/* INSERT INTO Utente (Nome, Cognome, Email, TipoUtente)
+VALUES
+  ('Mario', 'Rossi', 'mario.rossi@email.com', 'Membro'),
+  ('Anna', 'Verdi', 'anna.verdi@email.com', 'Membro'),
+  ('Luigi', 'Bianchi', 'luigi.bianchi@email.com', 'Istruttore'),
+  ('Sara', 'Neri', 'sara.neri@email.com', 'Membro'),
+  ('Marco', 'Gialli', 'marco.gialli@email.com', 'Membro'),
+  ('Luca', 'Rossi', 'luca.rossi@email.com', 'Membro'),
+  ('Maria', 'Verdi', 'maria.verdi@email.com', 'Membro'),
+  ('Paolo', 'Bianchi', 'paolo.bianchi@email.com', 'Istruttore'),
+  ('Sofia', 'Neri', 'sofia.neri@email.com', 'Istruttore'),
+  ('Andrea', 'Gialli', 'andrea.gialli@email.com', 'Istruttore'); */
+
+/* INSERT INTO Membro (DataNascita, DataRegistrazione, Telefono, Indirizzo, Sesso, LivelloEsperienza, ObiettiviFitness, Utente)
+VALUES
+  ('1990-01-01', '2023-11-14', '333-3333333', 'Via Roma 12, Milano', 'M', 'Principiante', 'Perdere peso', 1),
+  ('1985-05-15', '2023-11-14', '444-4444444', 'Via Verdi 23, Torino', 'F', 'Intermedio', 'Aumentare la massa muscolare', 2),
+  ('1970-12-24', '2023-11-14', '555-5555555', 'Via Cavour 34, Napoli', 'M', 'Avanzato', 'Migliorare la performance nella corsa', 4),
+  ('1995-08-07', '2023-11-14', '666-6666666', 'Via Dante 45, Firenze', 'F', 'Principiante', 'Rimanere in forma', 5),
+  ('2000-03-11', '2023-11-14', '777-7777777', 'Via Garibaldi 56, Bologna', 'M', 'Intermedio', 'Imparare nuove discipline sportive', 6),
+  ('1998-06-12', '2023-11-15', '888-8888888', 'Via Mazzini 67, Roma', 'F', 'Intermedio', 'Aumentare la resistenza', 7);
+ */
+/* INSERT INTO Istruttore (Utente, Qualifiche, Esperienza, AreeCompetenze)
+VALUES
+  (3, 'Personal Trainer', 7, 'Fitness, Allenamento funzionale'),
+  (8, 'Maestro di Arti Marziali', 8, 'Kickboxing, Muay Thai'),
+  (9, 'Istruttrice di Pilates', 5, 'Pilates Reformer, Pilates Matwork'),
+  (10, 'Nutrizionista Sportivo', 3, 'Alimentazione per sportivi, Piani dietetici personalizzati'); */
+
+/* INSERT INTO Iscrizione (DataInizio, DataFine, TipoAbbonamento, Costo, Membro)
+VALUES
+  ('2024-02-05', '2024-03-04', 'Mensile', 50.00, 1),
+  ('2024-02-05', '2024-05-04', 'Trimestrale', 120.00, 2),
+  ('2024-02-05', '2024-08-31', 'Annuale', 360.00, 3),
+  ('2024-02-05', '2024-03-15', 'Settimanale', 25.00, 4),
+  ('2024-02-05', '2024-02-29', 'Giornaliero', 10.00, 5),
+  ('2024-02-05', '2024-03-10', 'Pacchetto 10 lezioni', 80.00, 6); */
+
+
+/* ALTER TABLE Allenamento
+CHANGE COLUMN Utente Membro INT;
+ALTER TABLE Allenamento
+ADD FOREIGN KEY (Membro) REFERENCES Membro(IDMembro);
+ */
+
+/* INSERT INTO Allenamento (TipoAllenamento, DataAllenamento, Durata, CalorieBruciate, Piattaforma, Membro, Istruttore)
+VALUES
+  ('HIIT', '2024-02-06', 30, 350, 'Palestra', 1, 4),
+  ('Yoga Vinyasa', '2024-02-07', 60, 220, 'Online (Zoom)', 5, NULL),
+  ('Forza Addominale', '2024-02-08', 20, 150, 'Casa', 2, 1),
+  ('Nuoto', '2024-02-09', 45, 400, 'Piscina comunale', 6, 4),
+  ('Pilates Matwork', '2024-02-10', 50, 180, 'Studio Pilates', 4, 3),
+  ('Kickboxing', '2024-02-11', 60, 500, 'Palestra', 3, 2),
+  ('Forza Addominale', '2024-02-08', 20, 150, 'Zoom', 1, 1); */
+
+/* INSERT INTO ClasseOnline (NomeClasse, Istruttore, Orario, Piattaforma)
+VALUES
+  ('Yoga Flow per Risvegliare il Corpo', 3, '09:00:00', 'Zoom'),
+  ('Brucia Calorie con HIIT!', 4, '18:00:00', 'YouTube Live'),
+  ('I Segreti della Cucina Vegetariana', 4, '19:30:00', 'Google Meet'),
+  ('Pilates per Tutti', 3, '10:00:00', 'Facebook Live'),
+  ('Ritrova la Calma con la Mindfulness', 2, '14:00:00', 'Zoom'); */
+
+/* UPDATE Allenamento
+SET Istruttore = 3
+WHERE IDAllenamento = 2;
+ */
+
+/* INSERT INTO Feedback (Commento, Valutazione, Membro, Allenamento)
+VALUES
+    ('Lezione molto interessante e ben strutturata.', 5, 5, 2),
+    ('Istruttore preparato e coinvolgente. Consigliato!', 4, 4, 5),
+    ('Esercizi un po troppo difficili per il mio livello.', 3, 1, 1),
+    ('Palestra pulita e attrezzata. Atmosfera piacevole.', 5, 3, 6),
+    ('Corso poco chiaro e dispersivo. Mi aspettavo di più.', 2, 6, 4); */
+
+/* INSERT INTO Pagamento (DataPagamento, MetodoPagamento, Importo, Iscrizione)
+VALUES 
+    ('2024-02-01', 'Carta di Credito', 50.00, 1),
+    ('2024-02-05', 'Bonifico Bancario', 120.00, 2),
+    ('2024-02-10', 'PayPal', 360.00, 3),
+    ('2024-02-15', 'Contrassegno', 25.00, 4),
+    ('2024-02-20', 'Carta di Credito', 10.00, 5),
+    ('2024-02-25', 'Bonifico Bancario', 80.00, 6); */
+
+/* INSERT INTO Partecipazione (DataPartecipazione, Completato, Membro, Allenamento)
+VALUES
+    ('2024-02-11', TRUE, 3, 6),
+    ('2024-02-10', FALSE, 4, 5),
+    ('2024-02-09', TRUE, 6, 4),
+    ('2024-02-08', TRUE, 2, 3),
+    ('2024-02-07', FALSE, 5, 2),
+    ('2024-02-06', TRUE, 1, 1),
+    ('2024-02-08', TRUE, 1, 3); */
+
+
+/* INSERT INTO StatisticheAllenamento (AllenamentiTotali, DurataTotale, CalorieMedie, UltimoAggiornamento, Membro)
+VALUES
+    (10, 300, 250, '2024-02-24', 1),
+    (5, 150, 180, '2024-02-24', 2),
+    (8, 240, 300, '2024-02-24', 3),
+    (12, 360, 220, '2024-02-24', 4),
+    (7, 210, 190, '2024-02-24', 5),
+    (15, 450, 280, '2024-02-24', 6),
+    (16, 480, 280, '2024-03-10', 1); */
